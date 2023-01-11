@@ -36,10 +36,12 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
         title: const Text('Animated Container'),
       ),
       body: Center(
-          child: Container(
-        width: _width,
-        height: _height,
-        decoration: BoxDecoration(color: _color, borderRadius: _borderRadius),
+        child: AnimatedContainer(
+          curve: Curves.easeOutCubic,
+          duration: const Duration(milliseconds: 400),
+          width: _width,
+          height: _height,
+          decoration: BoxDecoration(color: _color, borderRadius: _borderRadius),
       )),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.play_circle_outlined, size: 35),

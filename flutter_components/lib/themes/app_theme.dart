@@ -15,7 +15,7 @@ class AppTheme {
 
       //TextButton Theme
       textButtonTheme: TextButtonThemeData(
-        style: TextButton.styleFrom(foregroundColor: primary), 
+        style: TextButton.styleFrom(foregroundColor: primary),
       ),
 
       //FloatingActionButton
@@ -35,21 +35,22 @@ class AppTheme {
 
       //InputDecoration
       inputDecorationTheme: const InputDecorationTheme(
-        floatingLabelStyle: TextStyle( color: primary),
+        floatingLabelStyle: TextStyle(color: primary),
         enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide( color: primary),
-          borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10), topRight: Radius.circular(10))
-        ),
+            borderSide: BorderSide(color: primary),
+            borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(10),
+                topRight: Radius.circular(10))),
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide( color: primary),
-          borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10), topRight: Radius.circular(10))
-        ),
+            borderSide: BorderSide(color: primary),
+            borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(10),
+                topRight: Radius.circular(10))),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10), topRight: Radius.circular(10))
-        ),
-      )
-
-    );
+            borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(10),
+                topRight: Radius.circular(10))),
+      ));
 
   static final ThemeData darkTheme = ThemeData.dark().copyWith(
       //Color primario

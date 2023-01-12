@@ -27,38 +27,46 @@ class InputsScreen extends StatelessWidget {
               key: myFormKey,
               child: Column(
                 children: [
-                  const CustomInputField(
+                  CustomInputField(
                     labelText: 'Nombre',
                     hintText: 'Nombre del usuario',
                     helperText: 'Solo letras',
                     counterText: '3 caracteres',
+                    formProperty: 'first_name',
+                    formValues: formValues,
                   ),
                   const SizedBox(
                     height: 30,
                   ),
-                  const CustomInputField(
+                  CustomInputField(
                     labelText: 'Apellido',
                     hintText: 'Apellido del usuario',
                     helperText: 'Solo letras',
                     counterText: '3 caracteres',
+                    formProperty: 'last_name',
+                    formValues: formValues,
                   ),
                   const SizedBox(
                     height: 30,
                   ),
-                  const CustomInputField(
+                  CustomInputField(
                     labelText: 'Email',
                     hintText: 'Correo del usuario',
                     helperText: 'Solo letras',
                     counterText: '3 caracteres',
                     keyboardType: TextInputType.emailAddress,
+                    formProperty: 'Email',
+                    formValues: formValues,
                   ),
                   const SizedBox(
                     height: 30,
                   ),
-                  const CustomInputField(
+                  CustomInputField(
                     labelText: 'Contraseña',
                     hintText: 'Contraseña del usuario',
                     obscureText: true,
+                    formProperty: 'password',
+                    formValues: formValues,
                   ),
                   const SizedBox(
                     height: 30,

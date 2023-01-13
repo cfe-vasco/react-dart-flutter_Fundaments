@@ -39,12 +39,19 @@ class _ListViewBuilderScreenState extends State<ListViewBuilderScreen> {
 
     isLoading = false;
     setState(() {});
+
+    if (scrollController.position.pixels + 100 <=
+        scrollController.position.maxScrollExtent) return;
   }
 
   void add5() {
     final lastId = imagesIds.last;
     imagesIds.addAll([1, 2, 3, 4, 5].map((e) => lastId + e));
     setState(() {});
+
+    scrollController.animateTo(scrollController.position.pixels + 120,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.fastOutSlowIn);
   }
 
   @override
@@ -72,11 +79,11 @@ class _ListViewBuilderScreenState extends State<ListViewBuilderScreen> {
                         'https://picsum.photos/500/300?image=${imagesIds[index]}'));
               },
             ),
-            Positioned(
-                bottom: 40,
-                left: size.width * 0.5 - 30,
-                child: const _LoadingIcon()
-              )
+            if (isLoading)
+              Positioned(
+                  bottom: 40,
+                  left: size.width * 0.5 - 30,
+                  child: const _LoadingIcon())
           ],
         ),
       ),

@@ -2,11 +2,12 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:peliculas_app_flutter/models/models.dart';
 
 class MoviesProvider extends ChangeNotifier {
-  String _apiKey_ = 'fc717f1e907ebd61dcb318d2949c503c';
-  String _baseURL = 'api.themoviedb.org';
-  String _lenguaje = 'es-ES';
+  final String _apiKey_ = 'fc717f1e907ebd61dcb318d2949c503c';
+  final String _baseURL = 'api.themoviedb.org';
+  final String _lenguaje = 'es-ES';
 
   moviesProvider() {
     print('MoviesProvider incializado');
@@ -20,7 +21,7 @@ class MoviesProvider extends ChangeNotifier {
       'page': '1',
     });
     final response = await http.get(url);
-    final Map<String, dynamic> dedocedData = json.decode(response.body);
-    print(dedocedData['results']);
+    final nowPlayigResponse = NowPlayingResponse.fromJson(response.body);
+    print(nowPlayigResponse.results[1].title);
   }
 }

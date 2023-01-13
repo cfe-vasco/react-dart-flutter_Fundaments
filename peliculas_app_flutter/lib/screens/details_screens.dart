@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:peliculas_app_flutter/themes/app_theme.dart';
+import 'package:peliculas_app_flutter/widgets/widgets.dart';
 
 class DetailsScreen extends StatelessWidget {
   const DetailsScreen({super.key});
@@ -13,9 +14,15 @@ class DetailsScreen extends StatelessWidget {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          const _CustomAppBar(),
+          _CustomAppBar(),
           SliverList(
-              delegate: SliverChildListDelegate([_PosterAndTitle()]))
+              delegate: SliverChildListDelegate([
+            _PosterAndTitle(),
+            _Overview(),
+            _Overview(),
+            _Overview(),
+            CastingCards(),
+          ]))
         ],
       ),
     );
@@ -23,8 +30,6 @@ class DetailsScreen extends StatelessWidget {
 }
 
 class _CustomAppBar extends StatelessWidget {
-  const _CustomAppBar();
-
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
@@ -37,6 +42,7 @@ class _CustomAppBar extends StatelessWidget {
         titlePadding: const EdgeInsets.all(0),
         title: Container(
           width: double.infinity,
+          padding: const EdgeInsets.only(bottom: 10),
           alignment: Alignment.bottomCenter,
           color: Colors.black12,
           child: const Text(
@@ -108,6 +114,20 @@ class _PosterAndTitle extends StatelessWidget {
           )
         ],
       ),
+    );
+  }
+}
+
+class _Overview extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+      child: Text(
+          'Sunt quis eiusmod anim deserunt Lorem mollit aliqua non eiusmod. Eiusmod reprehenderit pariatur aute ullamco. Sint veniam non occaecat excepteur commodo mollit aliqua magna Lorem reprehenderit esse incididunt ullamco et. Id eiusmod qui non consequat dolore id veniam nostrud dolor laboris. Esse proident adipisicing irure anim eu cupidatat proident laboris. Ullamco nulla cillum excepteur magna id duis pariatur ut. Qui adipisicing dolore velit adipisicing commodo nostrud culpa.',
+          textAlign: TextAlign.justify,
+          style: Theme.of(context).textTheme.subtitle1,
+        ),
     );
   }
 }

@@ -18,6 +18,7 @@ class _MovieSliderState extends State<MovieSlider> {
 
   @override
   void initState() {
+    // TODO: implement initState
     super.initState();
     scrollController.addListener(() {
       if (scrollController.position.pixels >=
@@ -28,6 +29,7 @@ class _MovieSliderState extends State<MovieSlider> {
 
   @override
   void dispose() {
+    // TODO: implement dispose
     super.dispose();
   }
 
@@ -55,7 +57,6 @@ class _MovieSliderState extends State<MovieSlider> {
               itemCount: widget.movies.length,
               itemBuilder: ((context, index) => _MovieContainer(
                     movie: widget.movies[index],
-                    heroId: '${widget.title}-$index-${widget.movies[index].id}',
                   )),
             ),
           )
@@ -66,18 +67,14 @@ class _MovieSliderState extends State<MovieSlider> {
 }
 
 class _MovieContainer extends StatelessWidget {
-  final Movie movie;
-  final String heroId;
-
   const _MovieContainer({
     Key? key,
     required this.movie,
-    required this.heroId,
   }) : super(key: key);
 
+  final Movie movie;
   @override
   Widget build(BuildContext context) {
-    movie.heroId = '';
     return Container(
       width: 130,
       height: 200,
@@ -87,17 +84,14 @@ class _MovieContainer extends StatelessWidget {
           GestureDetector(
             onTap: () =>
                 Navigator.pushNamed(context, 'details', arguments: movie),
-            child: Hero(
-              tag: movie.heroId!,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: FadeInImage(
-                  placeholder: const AssetImage('assets/no-image.jpg'),
-                  image: NetworkImage(movie.fullPosterImg),
-                  width: 130,
-                  height: 190,
-                  fit: BoxFit.cover,
-                ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: FadeInImage(
+                placeholder: const AssetImage('assets/no-image.jpg'),
+                image: NetworkImage(movie.fullPosterImg),
+                width: 130,
+                height: 190,
+                fit: BoxFit.cover,
               ),
             ),
           ),

@@ -19,8 +19,10 @@ class MoviesProvider extends ChangeNotifier {
     duration: const Duration(milliseconds: 500),
   );
 
-  final StreamController<List<Movie>> _suggestionsStreamController = StreamController.broadcast();
-  Stream<List<Movie>> get suggestionStream => _suggestionsStreamController.stream;
+  final StreamController<List<Movie>> _suggestionsStreamController =
+      StreamController.broadcast();
+  Stream<List<Movie>> get suggestionStream =>
+      _suggestionsStreamController.stream;
 
   MoviesProvider() {
     getOnDisplayMovies();
@@ -66,15 +68,26 @@ class MoviesProvider extends ChangeNotifier {
   }
 
   Future<List<Movie>> searchMovies(String query) async {
-    final url = Uri.https(_baseURL, '3/search/movie',{
-      'api_key': _apiKey_, 
-      'language': _lenguaje, 
-      'query': query
-    });
+    final url = Uri.https(_baseURL, '3/search/movie',
+        {'api_key': _apiKey_, 'language': _lenguaje, 'query': query});
 
     final response = await http.get(url);
     final searchResponse = SearchResponse.fromJson(response.body);
 
     return searchResponse.results;
+  }
+
+  void getSuggestionsByQuery(String searchTerm) {
+    debouncer.value = '';
+    debouncer.onValue = (value) async {
+      final results = await searchMovies(value);
+      _suggestionsStreamController.add(results);
+    };
+
+    final timer = Timer.periodic(const Duration(milliseconds: 300), (_) {
+      debouncer.value = searchTerm;
+    });
+    Future.delayed(const Duration(milliseconds: 301))
+        .then((_) => timer.cancel());
   }
 }

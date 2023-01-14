@@ -48,6 +48,7 @@ class MovieSearchDelegate extends SearchDelegate {
       return _emptyContainer();
     }
     final moviesProvider = Provider.of<MoviesProvider>(context, listen: false);
+    moviesProvider.getSuggestionsByQuery(query);
 
     return StreamBuilder(
       stream: moviesProvider.suggestionStream,
@@ -88,9 +89,5 @@ class _MovieItem extends StatelessWidget {
         onTap: (() {
           Navigator.pushNamed(context, 'details', arguments: movie);
         }));
-  }
-
-  void getSuggestionsByQuery(String searchTerm){
-    
   }
 }

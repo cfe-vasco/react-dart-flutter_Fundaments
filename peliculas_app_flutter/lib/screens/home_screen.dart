@@ -8,7 +8,6 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final moviesProvider = Provider.of<MoviesProvider>(context);
 
     print(moviesProvider.onDisplayMovies);
@@ -33,6 +32,7 @@ class HomeScreen extends StatelessWidget {
               MovieSlider(
                 movies: moviesProvider.popularMovies,
                 title: 'Popular',
+                onNextPage: () => moviesProvider.getPopularMovies(),
               ),
             ],
           ),

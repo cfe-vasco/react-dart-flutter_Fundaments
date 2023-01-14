@@ -16,6 +16,7 @@ class Movie {
     required this.video,
     required this.voteAverage,
     required this.voteCount,
+    this.heroId
   });
 
   bool adult;
@@ -32,20 +33,21 @@ class Movie {
   bool video;
   double voteAverage;
   int voteCount;
+  String? heroId;
 
   get fullPosterImg {
-    if(posterPath != null ) {
+    if (posterPath != null) {
       return 'https://image.tmdb.org/t/p/w500$posterPath';
     }
-      
+
     return 'https://i.stack.ingur.com/GNhx0.png';
   }
 
   get fullBackDropPath {
-    if(backdropPath != null ) {
+    if (backdropPath != null) {
       return 'https://image.tmdb.org/t/p/w500$backdropPath';
     }
-      
+
     return 'https://i.stack.ingur.com/GNhx0.png';
   }
 

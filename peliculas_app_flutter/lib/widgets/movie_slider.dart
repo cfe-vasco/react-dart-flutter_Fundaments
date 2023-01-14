@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:peliculas_app_flutter/models/models.dart';
 
 class MovieSlider extends StatelessWidget {
-  const MovieSlider({super.key});
+  final List<Movie> movies;
+  final String? title;
+
+  const MovieSlider({super.key, required this.movies, this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -11,22 +15,24 @@ class MovieSlider extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20),
+          if(title != null)
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Text(
-              'Populares',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              title!,
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
           ),
           Expanded(
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: 20,
-              itemBuilder: ((context, index) => const _MovieContainer()),
+              itemCount: movies.length,
+              itemBuilder: ((context, index) => _MovieContainer(
+                    movie: movies[index],
+                  )),
             ),
           )
         ],
-        
       ),
     );
   }
@@ -35,8 +41,10 @@ class MovieSlider extends StatelessWidget {
 class _MovieContainer extends StatelessWidget {
   const _MovieContainer({
     Key? key,
+    required this.movie,
   }) : super(key: key);
 
+  final Movie movie;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -46,34 +54,30 @@ class _MovieContainer extends StatelessWidget {
       child: Column(
         children: [
           GestureDetector(
-            onTap: () => Navigator.pushNamed(context, 'details', arguments: 'movie-instance'),
+            onTap: () => Navigator.pushNamed(context, 'details',
+                arguments: 'movie-instance'),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
-              child: const FadeInImage(
-                placeholder: AssetImage('assets/no-image.jpg'), 
-                image: NetworkImage('https://via.placeholder.com/300x400'),
+              child: FadeInImage(
+                placeholder: const AssetImage('assets/no-image.jpg'),
+                image: NetworkImage(movie.fullPosterImg),
                 width: 130,
                 height: 190,
                 fit: BoxFit.cover,
               ),
             ),
           ),
-
           const SizedBox(
             height: 5,
           ),
-
-          const Text(
-            'Pinocchio', 
+          Text(
+            movie.title,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             textAlign: TextAlign.center,
           )
-
         ],
       ),
     );
   }
 }
-
-

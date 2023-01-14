@@ -41,7 +41,7 @@ class Movie {
   }
 
   get fullBackDropPath {
-    if(posterPath != null )
+    if(backdropPath != null )
       return 'https://image.tmdb.org/t/p/w500${backdropPath}';
       
     return 'https://i.stack.ingur.com/GNhx0.png';

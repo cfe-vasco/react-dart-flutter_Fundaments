@@ -12,8 +12,8 @@ class CreditsResponse {
   });
 
   int id;
-  List<Cast?> cast;
-  List<Cast?> crew;
+  List<Cast> cast;
+  List<Cast> crew;
 
   factory CreditsResponse.fromJson(String str) =>
       CreditsResponse.fromMap(json.decode(str));
@@ -22,10 +22,10 @@ class CreditsResponse {
         id: json["id"],
         cast: json["cast"] == null
             ? []
-            : List<Cast?>.from(json["cast"]!.map((x) => Cast.fromMap(x))),
+            : List<Cast>.from(json["cast"]!.map((x) => Cast.fromMap(x))),
         crew: json["crew"] == null
             ? []
-            : List<Cast?>.from(json["crew"]!.map((x) => Cast.fromMap(x))),
+            : List<Cast>.from(json["crew"]!.map((x) => Cast.fromMap(x))),
       );
 }
 

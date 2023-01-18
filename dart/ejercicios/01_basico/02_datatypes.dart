@@ -18,5 +18,12 @@ void main() {
   $completeName
   Como estas?''';
 
-  print(multiLinea);
+  // print(multiLinea);
+
+// ====== Strings
+
+  bool isActive = true;
+  bool isNotActive = !isActive;
+
+  print(isNotActive);
 }

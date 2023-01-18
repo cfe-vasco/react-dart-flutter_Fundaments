@@ -31,7 +31,18 @@ void main() {
 
   List<String> villanos = ['Lex Luthor', 'Red Skull', 'Doom'];
 
-  villanos[0] = 'SuperMan';
+  villanos.add('Duende Verde');
 
-  print(villanos);
+  // print(villanos);
+
+  // var villanosSet = villanos.toSet();
+  // print(villanosSet);
+
+// ====== Sets
+
+  Set<String> villanos2 = {'Lex Luthor', 'Red Skull', 'Doom'};
+
+  villanos.add('Duende Verde');
+
+  // print(villanos2);
 }

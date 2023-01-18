@@ -45,4 +45,26 @@ void main() {
   villanos.add('Duende Verde');
 
   // print(villanos2);
+
+// ====== Sets (Diccionarios / Objetos literales)
+
+  Map<String, Object> ironman = {
+    'nombre': 'Tony Stark',
+    'poder': 'Inteligencia y dinero',
+    'nivel': 9000,
+  };
+
+  // print(ironman['nivel']);
+
+  Map<String, dynamic> capitan = new Map();
+
+  capitan.addAll({
+    'nombre': 'Steve',
+    'poder': 'Super soldado',
+    'nivel': 5000
+  });
+
+  //capitan.addAll(ironman);
+  
+  print(capitan);
 }

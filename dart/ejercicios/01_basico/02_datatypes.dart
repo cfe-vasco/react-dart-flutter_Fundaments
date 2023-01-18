@@ -20,10 +20,18 @@ void main() {
 
   // print(multiLinea);
 
-// ====== Strings
+// ====== Booleanos
 
   bool isActive = true;
   bool isNotActive = !isActive;
 
-  print(isNotActive);
+  // print(isNotActive);
+
+// ====== Lists
+
+  List<String> villanos = ['Lex Luthor', 'Red Skull', 'Doom'];
+
+  villanos[0] = 'SuperMan';
+
+  print(villanos);
 }

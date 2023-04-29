@@ -68,7 +68,8 @@ class _MovieSliderState extends State<MovieSlider> {
 class _MovieContainer extends StatelessWidget {
   const _MovieContainer({
     Key? key,
-    required this.movie, required this.heroId,
+    required this.movie,
+    required this.heroId,
   }) : super(key: key);
 
   final Movie movie;
